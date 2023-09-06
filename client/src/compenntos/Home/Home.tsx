@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
 function Home() {
   const [showRegistration, setShowRegistration] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
@@ -16,7 +15,7 @@ function Home() {
   };
 
   return (
-    <div>
+    <div className="countyner">
       <h1>Home</h1>
       <Link to="/trips">
         <button>Click to go to all trips</button>
@@ -26,7 +25,7 @@ function Home() {
           Click to go to registration
         </button>
       </Link>
-      <Link to="/UserLogin">
+      <Link to="/Login">
         <button onClick={navigateToLogin}>Click to go to login</button>
       </Link>
     </div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 interface RegistrationData {
   email: string;
@@ -8,6 +8,8 @@ interface RegistrationData {
 }
 
 function UserLogin() {
+  const { register, handleSubmit } = useForm<RegistrationData>(); // Move useForm outside the component
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -19,43 +21,53 @@ function UserLogin() {
     setPassword(e.target.value);
   };
 
-  const handleLogin = () => {
-    const data: RegistrationData = {
-      email: email,
-      password: password,
-    };
+  const onSubmit = async (data: RegistrationData) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/auth/login",
+        data,
+        {
+          headers: { authorization: "test-token" },
+        }
+      );
 
-    axios
-      .post("http://localhost:3000/api/auth/login", data)
-      .then((response) => {
-        console.log("Login successful:", response.data.message);
-        setEmail("");
-        setPassword("");
-      })
-      .catch((error) => {
-        console.error("Error during login:", error);
-      });
+      const token = response.data.responseObj.token;
+      console.log("Login successful. Token:", token);
+      localStorage.setItem("userToken", token);
+      alert("Login successful");
+      setEmail("");
+      setPassword("");
+    } catch (error) {
+      console.error("Error during login:", error);
+      alert("Error during login");
+    }
   };
 
   return (
-    <div>
-      <Link to="/">
-        <button>Click to  Home</button>
-      </Link>
-      <h1>Login</h1>
-      <div>
-        <label>Email:</label>
-        <input type="text" value={email} onChange={handleEmailChange} />
-      </div>
-      <div>
-        <label>Password:</label>
-        <input
-          type="password"
-          value={password}
-          onChange={handlePasswordChange}
-        />
-      </div>
-      <button onClick={handleLogin}>Login</button>
+    <div className="container">
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <label>
+          Email
+          <input
+            type="email"
+            {...register("email")}
+            value={email}
+            onChange={handleEmailChange}
+          />
+        </label>
+        <br />
+        <label>
+          Password
+          <input
+            type="password"
+            {...register("password")}
+            value={password}
+            onChange={handlePasswordChange}
+          />
+        </label>
+        <br />
+        <input type="submit" value="login" />
+      </form>
     </div>
   );
 }

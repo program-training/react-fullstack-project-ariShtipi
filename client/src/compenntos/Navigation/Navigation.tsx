@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
 import { Container, Nav, Navbar } from "react-bootstrap";
-
 export function NavBar() {
   return (
     <Navbar className="navbar navbar-dark bg-primary">
@@ -18,6 +17,11 @@ export function NavBar() {
           <Nav.Link to="/Login" as={NavLink}>
             Login
           </Nav.Link>
+          <Nav.Link to="/NewTripForm" as={NavLink}>
+            New trip form
+          </Nav.Link>
+          <Nav.Link to="/TripDetail" as={NavLink}></Nav.Link>
+          <Nav.Link to="/UpdateTripForm" as={NavLink}></Nav.Link>
         </Nav>
       </Container>
     </Navbar>
