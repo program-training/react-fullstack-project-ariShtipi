@@ -175,10 +175,12 @@ function UpdateTripForm() {
           />
         </label>
         <br />
-        <button type="submit">Update Trip</button>
+        <button className="btn btn-primary" type="submit">
+          Update Trip
+        </button>
       </form>
       <Link to="/trips">
-        <button>Click to go to all trips</button>
+        <button className="btn btn-primary">Click to go to all trips</button>
       </Link>
     </div>
   );

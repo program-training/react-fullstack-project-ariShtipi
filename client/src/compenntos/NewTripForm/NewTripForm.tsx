@@ -84,10 +84,10 @@ function NewTrip() {
           <input type="text" {...register("activities")} />
         </label>
         <br />
-        <input type="submit" value="login" />
+        <input className="btn btn-primary" type="submit" value="login" />
       </form>
       <Link to="/trips">
-        <button>Click to go to all trips</button>
+        <button className="btn btn-primary">Click to go to all trips</button>
       </Link>
     </div>
   );
