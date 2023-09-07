@@ -58,7 +58,7 @@ function Trips() {
                 <p>End Date: {trip.endDate}</p>
                 <img className="imgTrips" src={trip.image} alt={trip.name} />
                 <button
-                  className="buttonDelete"
+                  className="btn btn-primary"
                   onClick={(e) => {
                     e.stopPropagation();
                     e.preventDefault();
@@ -68,7 +68,7 @@ function Trips() {
                   DELETE
                 </button>
                 <Link to={`/UpdateTripForm/${trip.id}`}>
-                  <button>Update Trip Form</button>
+                  <button className="btn btn-primary">Update Trip Form</button>
                 </Link>
               </ol>
             </Link>
@@ -77,10 +77,10 @@ function Trips() {
       </ul>
       <div>
         <Link to="/">
-          <button>Click to Home</button>
+          <button className="btn btn-primary">Click to Home</button>
         </Link>
         <Link to="/NewTripForm">
-          <button>Click to New trips form</button>
+          <button className="btn btn-primary">Click to New trips form</button>
         </Link>
       </div>
     </>

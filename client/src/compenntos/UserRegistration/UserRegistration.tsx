@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useForm } from "react-hook-form";
 
 interface RegistrationData {
   email: string;
@@ -8,6 +9,8 @@ interface RegistrationData {
 }
 
 const UserRegistration = () => {
+  const { register, handleSubmit } = useForm<RegistrationData>();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -19,12 +22,7 @@ const UserRegistration = () => {
     setPassword(e.target.value);
   };
 
-  const handleRegistration = () => {
-    const data: RegistrationData = {
-      email: email,
-      password: password,
-    };
-
+  const onSubmit = async (data: RegistrationData) => {
     axios
       .post("http://localhost:3000/api/auth/register", data, {
         headers: {
@@ -44,27 +42,43 @@ const UserRegistration = () => {
   };
 
   return (
-    <div>
-      <h1>User Registration</h1>
-      <div>
-        <label>Email:</label>
-        <input type="email" value={email} onChange={handleEmailChange} />
-      </div>
-      <div>
-        <label>Password:</label>
-        <input
-          type="password"
-          value={password}
-          onChange={handlePasswordChange}
-        />
-      </div>
-      <button onClick={handleRegistration}>Register</button>
-      <div>
+    <>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="form-group">
+          <label>
+            Email
+            <input
+              type="email"
+              className="form-control"
+              id="exampleInputEmail1"
+              {...register("email")}
+              value={email}
+              onChange={handleEmailChange}
+            />
+          </label>
+        </div>
+        <div className="form-group">
+          <label>
+            Password
+            <input
+              type="password"
+              className="form-control"
+              id="exampleInputPassword1"
+              placeholder="Password"
+              {...register("password")}
+              value={password}
+              onChange={handlePasswordChange}
+            />
+          </label>
+        </div>
+        <button type="submit" className="btn btn-primary">
+          Submit
+        </button>
         <Link to="/">
-          <button>Click to Home</button>
+          <button className="btn btn-primary">Click to Home</button>
         </Link>
-      </div>
-    </div>
+      </form>
+    </>
   );
 };
 

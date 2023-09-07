@@ -50,13 +50,13 @@ function TripDetails() {
           <img className="imgTrip" src={trip.image} alt={trip.name} />
           <div>
             <Link to={`/UpdateTripForm/${trip.id}`}>
-              <button>Update Trip Form</button>
+              <button className="btn btn-primary">Update Trip Form</button>
             </Link>
           </div>
         </div>
       </div>
       <Link to="/trips">
-        <button>Click to go to all trips</button>
+        <button className="btn btn-primary">Click to go to all trips</button>
       </Link>
     </>
   );

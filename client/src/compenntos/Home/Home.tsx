@@ -18,15 +18,17 @@ function Home() {
     <div className="countyner">
       <h1>Home</h1>
       <Link to="/trips">
-        <button>Click to go to all trips</button>
+        <button className="btn btn-primary">Click to go to all trips</button>
       </Link>
       <Link to="/registration">
-        <button onClick={navigateToRegistration}>
+        <button className="btn btn-primary" onClick={navigateToRegistration}>
           Click to go to registration
         </button>
       </Link>
       <Link to="/Login">
-        <button onClick={navigateToLogin}>Click to go to login</button>
+        <button className="btn btn-primary" onClick={navigateToLogin}>
+          Click to go to login
+        </button>
       </Link>
     </div>
   );

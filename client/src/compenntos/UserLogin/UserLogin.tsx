@@ -8,7 +8,7 @@ interface RegistrationData {
 }
 
 function UserLogin() {
-  const { register, handleSubmit } = useForm<RegistrationData>(); // Move useForm outside the component
+  const { register, handleSubmit } = useForm<RegistrationData>();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -44,31 +44,40 @@ function UserLogin() {
   };
 
   return (
-    <div className="container">
+    <>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label>
-          Email
-          <input
-            type="email"
-            {...register("email")}
-            value={email}
-            onChange={handleEmailChange}
-          />
-        </label>
-        <br />
-        <label>
-          Password
-          <input
-            type="password"
-            {...register("password")}
-            value={password}
-            onChange={handlePasswordChange}
-          />
-        </label>
-        <br />
-        <input type="submit" value="login" />
+        <div className="form-group">
+          <label >
+            Email
+            <input
+              type="email"
+              className="form-control"
+              id="exampleInputEmail1"
+              {...register("email")}
+              value={email}
+              onChange={handleEmailChange}
+            />
+          </label>
+        </div>
+        <div className="form-group">
+          <label>
+            Password
+            <input
+              type="password"
+              className="form-control"
+              id="exampleInputPassword1"
+              placeholder="Password"
+              {...register("password")}
+              value={password}
+              onChange={handlePasswordChange}
+            />
+          </label>
+        </div>
+        <button type="submit" className="btn btn-primary">
+          Submit
+        </button>
       </form>
-    </div>
+    </>
   );
 }
 
