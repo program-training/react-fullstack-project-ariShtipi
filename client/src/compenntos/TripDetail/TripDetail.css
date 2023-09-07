@@ -1,0 +1,17 @@
+.CardTrip {
+  border: 2px solid #ce1697;
+  background-color: #f1ecb6;
+  color: rgb(44, 44, 218);
+  border-radius: 33px;
+  padding: 20px;
+display: flex;  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.imgTrip {
+  width: 750px;
+  border-radius: 33px;
+
+}
+

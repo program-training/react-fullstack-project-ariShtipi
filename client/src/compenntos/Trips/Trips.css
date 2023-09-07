@@ -1,0 +1,22 @@
+.CardTrips {
+  border: 2px solid #ce1616;
+  background-color: antiquewhite;
+  color: rgb(44, 44, 218);
+  border-radius: 33px;
+  padding: 20px;
+  margin: 20px;
+  width: 650px;
+  display: flex;
+  align-items: center;
+}
+.CardTrips a{
+  text-decoration: none;
+}
+
+.imgTrips {
+  width: 550px;
+  border-radius: 33px;
+}
+ul {
+  display: inline-block;
+}
